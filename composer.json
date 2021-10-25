@@ -1,0 +1,21 @@
+{
+    "name": "suyer/unheval",
+    "description": "Unheval inscripciones",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "Suyer Huerta Justo",
+            "email": "suyer.eminem@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/database": "^8.67",
+        "sebastiaanluca/laravel-router": "^10.0"
+    }
+}
