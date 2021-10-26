@@ -1,3 +1,9 @@
+<?php
+    if(isset($_SESSION['email'])){
+        dd('Ya iniciaste sesión');
+    }
+?>
+
 <!doctype html>
 <html lang="es">
 <head>

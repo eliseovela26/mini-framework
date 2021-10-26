@@ -3,6 +3,7 @@
 namespace App\models;
 
 use App\db\Database;
+use App\models\Auth;
 use Dflydev\DotAccessData\Data;
 
 class User
@@ -16,13 +17,7 @@ class User
 
     public function __construct()
     {
-        $lifetime=60*60*24*30;
-        session_set_cookie_params($lifetime);
-        session_regenerate_id(true);
-        session_set_cookie_params(1);
-        ini_set("session.use_cookies", 1);
-        ini_set("session.use_only_cookies", 1);
-        session_start();
+
     }
 
     public function load($data)
@@ -30,7 +25,6 @@ class User
         foreach ($data as $key => $value) {
             $this->$key = $value ?? null;
         }
-
     }
 
     public function save(){
@@ -46,7 +40,8 @@ class User
                     Database::$db->updateUsers($this);
 
                 }else{
-                    Database::$db->createUsers($this);
+                   Database::$db->createUsers($this);
+
                 }
             }catch (\Exception $e){
                 echo '<pre>';
@@ -71,24 +66,9 @@ class User
             var_dump($e->getMessage());
             echo '</pre>';
         }
-
         return $errors;
     }
 
-    public function setCurrentUser($email){
-        $_SESSION['email'] = $email;
-    }
 
-    public function getTypeUser(){
-        return $_SESSION['email'];
-    }
 
-    public function sessionStatus(){
-        return $_SESSION['status'];
-    }
-
-    public function logout(){
-        session_unset();
-        session_destroy();
-    }
 }

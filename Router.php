@@ -44,9 +44,6 @@ class Router
 
         $content = ob_get_clean();
 
-
-        //dd($page);
-
         if(str_contains($page,'auth')){
             include_once(__DIR__.'/resources/views/_auth.php');
         }else{

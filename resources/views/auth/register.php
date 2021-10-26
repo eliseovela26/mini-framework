@@ -15,7 +15,7 @@
 <h1>UNHEVAL</h1>
 <div class=" w3l-login-form">
     <h2>REGISTRATE </h2>
-    <form  action="/register" enctype="multipart/form-data" method="POST">
+    <form  action="/register" method="POST">
 
         <div class=" w3l-form-group">
             <label>Nombre:</label>
@@ -43,7 +43,7 @@
             <label>Contraseña:</label>
             <div class="group">
                 <i class="fas fa-unlock"></i>
-                <input type="password"  id="password_r" name="password_r" class="form-control" placeholder="vuelve a ingresar la contraseña:" required="required" />
+                <input type="password"  id="password_confirm" name="password_confirm" class="form-control" placeholder="vuelve a ingresar la contraseña:" required="required" />
             </div>
         </div>
         <button type="submit" id="btn_users_save" name="btn_users_save">Registrar</button>

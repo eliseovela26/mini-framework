@@ -2,25 +2,38 @@
 
 namespace App\controllers;
 
+use App\models\Auth;
 use App\Router;
 use App\models\Convenio;
 
 class ConvenioController
 {
     public function index(Router $router){
-        if($_SERVER['REQUEST_METHOD'] !== 'GET'){
-            $router->renderView('404');
+
+        $session = new Auth();
+
+        if(isset($_SESSION['email'])){
+
+            if($_SERVER['REQUEST_METHOD'] !== 'GET'){
+                $router->renderView('404');
+            }
+            //TODO feth users
+            $search = $_GET['search'] ?? null;
+
+            $convenios = $router->db->getConvenios($search);
+
+            $facultades = $router->db->getFacultades();
+            $instituciones = $router->db->getInstituciones();
+            $modalidades = $router->db->getModalidades();
+
+            $router->renderView('convenios/index',['convenios' => $convenios, 'facultades'=>$facultades, 'instituciones'=>$instituciones,'modalidades'=>$modalidades]);
+
+        }else{
+            \header('Location: /login');
+
         }
-        //TODO feth users
-        $search = $_GET['search'] ?? null;
 
-        $convenios = $router->db->getConvenios($search);
 
-        $facultades = $router->db->getFacultades();
-        $instituciones = $router->db->getInstituciones();
-        $modalidades = $router->db->getModalidades();
-
-        $router->renderView('convenios/index',['convenios' => $convenios, 'facultades'=>$facultades, 'instituciones'=>$instituciones,'modalidades'=>$modalidades]);
     }
 
     public function store(Router $router){

@@ -32,8 +32,6 @@ class Convenio
         foreach ($data as $key => $value) {
             $this->$key = $value ?? null;
         }
-        //dd($this->nombre);
-        //var_dump($this->nombre);
     }
 
     public function save(){
@@ -42,11 +40,9 @@ class Convenio
         if(empty($errors)){
             try {
                 if ($this->id){
-                    //dd($this);
                     Database::$db->updateConvenio($this);
 
                 }else{
-                    //var_dump($this->id);
                     Database::$db->createConvenios($this);
                 }
             }catch (\Exception $e){

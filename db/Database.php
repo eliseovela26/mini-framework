@@ -25,7 +25,6 @@ class Database
         $dsn = "$this->dbms:host=$this->host;port=$this->port;dbname=$this->db_name";
 
         $this->pdo = new PDO($dsn,$this->user,$this->password);
-        /*$db = new PDO("mysql:host=localhost;dbname=crudphp","root",'');*/
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         self::$db = $this;
 
@@ -201,7 +200,6 @@ class Database
         $statement->bindValue('fecha_inicio',$convenio->fecha_inicio);
         $statement->bindValue('fecha_fin',$convenio->fecha_fin);
         $statement->bindValue('fecha_registro',$fecha_registro);
-        //$statement->bindValue('estado',$convenio->estado);
         $statement->bindValue('facultad_id',$convenio->facultad_id);
         $statement->bindValue('institucion_id',$convenio->institucion_id);
         $statement->bindValue('modalidad_id',$convenio->modalidad_id);

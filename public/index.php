@@ -10,18 +10,19 @@ require __DIR__.'/../vendor/autoload.php';
 $router = new Router();
 
 $router->get('/',[UserController::class,'index']);
-$router->get('/users',[UserController::class,'show']);
+/*$router->get('/users',[UserController::class,'show']);
 $router->get('/users/create',[UserController::class,'create']);
 $router->get('/users/edit',[UserController::class,'edit']);
 $router->post('/users/update',[UserController::class,'update']);
 $router->post('/users',[UserController::class,'store']);
-$router->post('/users/destroy',[UserController::class,'destroy']);
+$router->post('/users/destroy',[UserController::class,'destroy']);*/
 
-//auth
+//Auth
 $router->get('/login',[AuthController::class, 'login']);
 $router->post('/login',[AuthController::class, 'auth']);
 $router->get('/register',[AuthController::class, 'register']);
 $router->post('/register',[AuthController::class, 'userRegister']);
+$router->get('/logout',[AuthController::class, 'logout']);
 
 //Convenios
 $router->get('/convenios',[ConvenioController::class,'index']);
